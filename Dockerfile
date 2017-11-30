@@ -27,11 +27,26 @@ RUN apk --update  --repository http://dl-4.alpinelinux.org/alpine/edge/community
     && /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && rm -rf /tmp/glibc*apk /var/cache/apk/*
     
-RUN apk add --no-cache --virtual .build-deps-testing \
-    --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-    gdal-dev \
-    geos-dev \
-    proj4-dev 
+ apk add --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
+     binutils \
+     gcc \
+     gdal \
+     geos \
+     jpeg-dev \
+     libffi-dev \
+     libpq \
+     linux-headers \
+     mailcap \
+     musl-dev \
+     proj4-dev \
+     postgresql \
+     postgresql-client \
+     postgresql-dev \
+     zlib-dev && \
+    rm -rf /var/cache/apk/*
+    
+RUN ln -s /usr/lib/libgeos_c.so.1 /usr/local/lib/libgeos_c.so
+RUN ln -s /usr/lib/libgdal.so.20.1.3 /usr/lib/libgdal.so
 
 # Configure environment
 ENV CONDA_DIR=/opt/conda CONDA_VER=4.3.30
