@@ -16,7 +16,7 @@ RUN apk --update  --repository http://dl-4.alpinelinux.org/alpine/edge/community
     sudo \
     libstdc++ \
     glib \
-    libgeos \
+    gdal \
     libxext \
     libxrender \
     tini \ 
