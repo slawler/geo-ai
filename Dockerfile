@@ -31,7 +31,7 @@ RUN apk add --no-cache --virtual .build-deps-testing \
     --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     gdal-dev \
     geos-dev \
-    proj4-dev \
+    proj4-dev 
 
 # Configure environment
 ENV CONDA_DIR=/opt/conda CONDA_VER=4.3.30
