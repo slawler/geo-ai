@@ -16,7 +16,6 @@ RUN apk --update  --repository http://dl-4.alpinelinux.org/alpine/edge/community
     sudo \
     libstdc++ \
     glib \
-    gdal \
     libxext \
     libxrender \
     tini \ 
@@ -27,6 +26,12 @@ RUN apk --update  --repository http://dl-4.alpinelinux.org/alpine/edge/community
     && /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib \
     && /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8 \
     && rm -rf /tmp/glibc*apk /var/cache/apk/*
+    
+RUN apk add --no-cache --virtual .build-deps-testing \
+    --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+    gdal-dev \
+    geos-dev \
+    proj4-dev \
 
 # Configure environment
 ENV CONDA_DIR=/opt/conda CONDA_VER=4.3.30
